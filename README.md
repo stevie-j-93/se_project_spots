@@ -1,21 +1,23 @@
 # Project 3: Spots
 
-### Overview  
+An image sharing site.
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+## Description
+
+This project was the start to understanding the aspects of what it is to be a software engineer. We were tasked with learning how to work with figma, and how to use it as a guide to our css properties, and how to make the webpage work and look exactly how it presents itself on figma.
+
+## Tech Stack
+
+- HTML
+- CSS
+- Responsive Design
+
+## Deployment
+
+This webpage is deployed to GitHub Pages
+
+- Deployment Link: https://github.com/stevie-j-93/se_project_spots
+
+**Images**
+![photo of the HTML on VS code](./images/C44BF3DC-C61D-44ED-86B0-BBBCCFABD80D.jpeg)
+![photo of plus button on the website](./images/BA5329F8-2544-4605-86A5-0C36587695F7.jpeg)
