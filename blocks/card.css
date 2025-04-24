@@ -37,7 +37,6 @@
 @media screen and (max-width: 627px) {
   .card {
     width: 288px;
-    height: 318px;
   }
 
   .card__image {
@@ -58,10 +57,17 @@
   }
 
   .card__like-btn {
-    width: 20px;
-    height: 18px;
-    opacity: 40%;
+    width: 22px;
+    height: 17px;
+    opacity: 0.4;
+    margin-right: 5px;
+    background-size: contain;
+  }
+
+  .card__content {
+    padding: 25px 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 }

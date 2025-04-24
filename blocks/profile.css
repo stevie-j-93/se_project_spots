@@ -65,22 +65,46 @@
   color: #fcf5e5;
   background-color: #212121;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   border: none;
   padding: 18px 32px;
   border-radius: 8px;
-  gap: 8px;
+  gap: 16px;
 }
 
+.profile__plus-symbol {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border: 2px;
+  order: -1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 16px;
+}
+
+.profile__plus-symbol img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile__plus-symbol img:first-child {
+  z-index: 0;
+}
+
+.profile__plus-symbol img:last-child {
+  z-index: 2;
+}
 @media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
     max-width: 288px;
     align-items: center;
     text-align: center;
-    padding-top: 20px;
   }
-
   .profile__column {
     align-items: center;
     margin-bottom: 20px;
