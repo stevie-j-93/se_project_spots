@@ -1,6 +1,6 @@
 .footer {
   background-color: #fcf5e5;
-  height: 60px;
+  padding: 60px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,4 +10,5 @@
   font-size: 16px;
   line-height: 1;
   color: #212121;
+  opacity: 0.7;
 }

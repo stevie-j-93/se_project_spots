@@ -5,6 +5,7 @@
 }
 
 .profile__avatar {
+  object-fit: cover;
   margin-right: 20px;
   border-radius: 8px;
   height: 190px;
@@ -20,9 +21,15 @@
   margin-top: auto;
   background-color: transparent;
   border: none;
+  cursor: pointer;
   display: flex;
   justify-content: start;
   color: #212121;
+}
+
+.profile__edit-btn:hover {
+  color: #000;
+  transition: 0.5s color #000;
 }
 .profile__name {
   margin: 0 0 12px;
@@ -39,9 +46,7 @@
 
 .profile__description {
   margin: 0;
-  width: 97px;
-  height: 16px;
-  color: #212121;
+  color: #212121b2;
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
@@ -70,6 +75,10 @@
   padding: 18px 32px;
   border-radius: 8px;
   gap: 16px;
+}
+
+.profile__add-btn:hover {
+  cursor: pointer;
 }
 
 .profile__plus-symbol {
@@ -112,7 +121,6 @@
 
   .profile__description {
     margin-bottom: 32px;
-    display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
