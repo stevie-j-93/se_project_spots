@@ -20,7 +20,7 @@ This webpage is deployed to GitHub Pages
 
 ## Video Description
 
-Video: https://drive.google.com/drive/folders/1NC1VcqiJmEB84eEs6ycngztGGSO1zChG?dmr=1&ec=wgc-drive-globalnav-goto
+Video: https://drive.google.com/file/d/18HtToVAlGNPth-a8zfs63RhvteByNXkN/view?usp=sharing
 
 **Images**
 ![photo of the HTML on VS code](./images/C44BF3DC-C61D-44ED-86B0-BBBCCFABD80D.jpeg)

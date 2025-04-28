@@ -19,6 +19,8 @@
 
 .profile__edit-btn {
   margin-top: auto;
+  font-weight: 500;
+  opacity: 0.7;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -26,11 +28,11 @@
   justify-content: start;
   color: #212121;
   transition: color 0.3s ease-in-out;
+  gap: 8px;
 }
 
 .profile__edit-btn:hover {
-  color: #000;
-  opacity: 0.6;
+  opacity: 1;
 }
 .profile__name {
   margin: 0 0 12px;
@@ -86,7 +88,7 @@
 
 .profile__add-btn:hover {
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .profile__plus-symbol {
@@ -103,6 +105,7 @@
 
 @media screen and (max-width: 627px) {
   .profile {
+    padding-top: 20px;
     flex-direction: column;
     max-width: 288px;
     align-items: center;
@@ -115,10 +118,6 @@
 
   .profile__description {
     margin-bottom: 32px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     max-width: 288px;
   }
   .profile__avatar {
@@ -131,18 +130,12 @@
   .profile__name {
     font-size: 20px;
     margin: 0 0 6px;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     max-width: 288px;
   }
 
   .profile__add-btn {
     margin: 0;
     width: 288px;
-    height: 52px;
     padding: 18px 32px;
     justify-content: center;
   }
