@@ -16,7 +16,7 @@ This project was the start to understanding the aspects of what it is to be a so
 
 This webpage is deployed to GitHub Pages
 
-- Deployment Link: https://github.com/stevie-j-93/se_project_spots
+- Deployment Link: https://stevie-j-93.github.io/se_project_spots/
 
 ## Video Description
 
