@@ -86,7 +86,7 @@
   line-height: 16px;
 }
 
-.profile__add-btn:hover {
+.profile__new-post-btn:hover {
   cursor: pointer;
   opacity: 0.8;
 }

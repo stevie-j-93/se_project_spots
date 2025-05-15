@@ -39,11 +39,11 @@
   height: 40px;
   background-color: transparent;
   border: none;
-  opacity: 40%;
 }
 
 .modal__close-btn:hover {
   cursor: pointer;
+  opacity: 40%;
 }
 
 .modal__title {
@@ -71,8 +71,8 @@
   margin: 8px 0 0;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid;
-  color: #21212166;
+  border: 1px solid #21212166;
+  color: #212121;
   padding: 16px 12px;
   font-weight: 500;
   font-size: 20px;
@@ -82,6 +82,7 @@
 
 .modal__input:hover {
   cursor: pointer;
+  border-color: #212121b3;
 }
 
 .modal__input::placeholder {
@@ -102,6 +103,7 @@
 
 .modal__submit-btn:hover {
   cursor: pointer;
+  opacity: 80%;
 }
 
 @media screen and (max-width: 627px) {
@@ -130,9 +132,7 @@
   }
 
   .modal__input {
-    font-weight: 500;
     font-size: 16px;
-    line-height: 1;
   }
 
   .modal__submit-btn {
