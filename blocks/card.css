@@ -11,6 +11,10 @@
   display: block;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
+
 .card__title {
   margin: 0;
   max-width: 353px;
