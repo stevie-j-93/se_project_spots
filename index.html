@@ -93,7 +93,10 @@
                 maxlength="200"
                 required
               />
-              <span id="profile-description-input-error" class="modal__error"></span>
+              <span
+                id="profile-description-input-error"
+                class="modal__error"
+              ></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -138,17 +141,18 @@
 
     <div class="modal modal_type_preview" id="preview-modal">
       <div class="modal__image-container">
-        <button type="button" class="modal__close-btn modal__close-btn_type_preview">
-          <img src="./images/Modalpreview-close.svg" alt="X icon"  />
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_type_preview"
+        >
+          <img src="./images/Modalpreview-close.svg" alt="X icon" />
         </button>
-        <img src="#" class="modal__image"/>
+        <img src="#" class="modal__image" alt="Modal Image" />
         <p class="modal__caption"></p>
-
       </div>
     </div>
-  </div>
 
-  <script src="./scripts/validation.js"></script>
-  <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
