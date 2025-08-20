@@ -217,9 +217,7 @@
     width: 276px;
     height: 54px;
   }
-}
 
-@media screen and (max-width: 627px) {
   .modal_type_preview {
     padding: 12px;
   }

@@ -63,7 +63,7 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
-  transition: color 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .card__like-btn:hover {
@@ -102,8 +102,5 @@
     height: 17px;
     margin-right: 5px;
     background-size: contain;
-  }
-
-  .card__content {
   }
 }
