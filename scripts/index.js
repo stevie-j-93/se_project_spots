@@ -32,7 +32,7 @@ const initialCards = [
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
-const editProfileForm = editProfileModal.querySelector(".modal__form");
+const editProfileForm = document.forms["edit-profile-form"];
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
 );
@@ -100,13 +100,25 @@ previewCloseBtn.addEventListener("click", () => {
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-editProfileBtn.addEventListener("click", function () {
+editProfileBtn.addEventListener("click", () => {
   editProfileNameInput.value = profileNameEl.textContent.trim();
   editProfileDescriptionInput.value = profileDescriptionEl.textContent.trim();
-  const inputs = Array.from(editProfileForm.querySelectorAll(".modal__input"));
-  const btn = editProfileForm.querySelector(".modal__submit-btn");
-  toggleButtonState(inputs, btn, settings);
+
+  const formEl = editProfileModal.querySelector(".modal__form");
   openModal(editProfileModal);
+
+  if (!formEl) {
+    console.warn("Edit Profile form not found inside modal.");
+    return;
+  }
+
+  const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector));
+  const btnEl = formEl.querySelector(settings.submitButtonSelector);
+  if (typeof resetValidation === "function") {
+    resetValidation(formEl, inputList, btnEl, settings);
+  } else {
+    toggleButtonState(inputList, btnEl, settings);
+  }
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -114,6 +126,11 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 newPostBtn.addEventListener("click", function () {
+  const formEl = addCardFormElement;
+  const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector));
+  const btnEl = formEl.querySelector(settings.submitButtonSelector);
+
+  resetValidation(formEl, inputList, btnEl, settings);
   openModal(newPostModal);
 });
 

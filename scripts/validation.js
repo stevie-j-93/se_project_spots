@@ -8,15 +8,25 @@ const settings = {
 };
 
 const showInputError = (formEl, inputEl, errorMsg, config) => {
-  const errorMsgEl = formEl.querySelector(config.errorClass);
+  const errorMsgId = `#${inputEl.id}-error`;
+  const errorMsgEl = formEl.querySelector(errorMsgId);
+  inputEl.classList.add(config.inputErrorClass);
+  if (!errorMsgEl) return;
   errorMsgEl.textContent = errorMsg;
   inputEl.classList.add(config.inputErrorClass);
 };
 
 const hideInputError = (formEl, inputEl, config) => {
-  const errorMsgEl = formEl.querySelector(config.errorClass);
+  const errorMsgId = `#${inputEl.id}-error`;
+  const errorMsgEl = formEl.querySelector(errorMsgId);
+  if (!errorMsgEl) return;
+
   errorMsgEl.textContent = "";
   inputEl.classList.remove(config.inputErrorClass);
+
+  if (config.errorClass) {
+    errorMsgEl.classList.remove(config.errorClass);
+  }
 };
 
 const checkInputValidity = (formEl, inputEl, config) => {
@@ -73,5 +83,13 @@ const enableValidation = (config) => {
     setEventListeners(formEl, config);
   });
 };
+
+function resetValidation(formEl, inputList, btnEl, config) {
+  inputList.forEach((inputEl) => {
+    hideInputError(formEl, inputEl, config);
+  });
+
+  toggleButtonState(inputList, btnEl, config);
+}
 
 enableValidation(settings);
