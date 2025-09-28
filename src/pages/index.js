@@ -1,3 +1,14 @@
+import "./index.css";
+import spots from "../images/Spots.svg";
+import avatar from "../images/avatar.jpg";
+import pencil from "../images/pencil.svg";
+
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+} from "../scripts/validation.js";
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -193,3 +204,5 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+enableValidation(settings);

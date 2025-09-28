@@ -7,14 +7,18 @@
     <meta name="author" content="Stephen Johnson" />
     <meta name="description" content="???" />
     <meta name="keywords" content="HTML, CSS," />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+
+    <link
+      rel="shortcut icon"
+      src="<%=require('./favicon.ico')%>"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
-          src="./images/Spots.svg"
+          src="<%=require('./images/Spots.svg')%>"
           alt="Spots Menu Header Logo"
           class="header__logo"
         />
@@ -22,7 +26,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
             alt="Bessie Coleman"
             class="profile__avatar"
           />
@@ -34,14 +38,18 @@
               class="profile__edit-btn"
               content="Edit Button"
             >
-              <img src="./images/pencil.svg" alt="Pencil Edit Button" />Edit
-              Profile
+              <img
+                src="<%=require('./images/pencil.svg')%>"
+                alt="Pencil Edit
+              Button"
+              />Edit Profile
             </button>
           </div>
           <button class="profile__new-post-btn">
-            <img src="./images/Group26.svg" alt="Plus Symbol" /><span
-              >New Post</span
-            >
+            <img
+              src="<%=require('./images/Group26.svg')%>"
+              alt="Plus Symbol"
+            /><span>New Post</span>
           </button>
         </section>
         <section class="cards page__section">
@@ -65,7 +73,11 @@
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn">
-            <img src="./images/Group27.svg" alt="X icon" class="close-btn" />
+            <img
+              src="<%=require('./images/Group27.svg')%>"
+              alt="X icon"
+              class="close-btn"
+            />
           </button>
           <h2 class="modal__title">Edit Profile</h2>
           <form class="modal__form" id="edit-profile-form" novalidate>
@@ -105,7 +117,11 @@
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn">
-            <img src="./images/Group27.svg" alt="X icon" class="close-btn" />
+            <img
+              src="<%=require('./images/Group27.svg')%>"
+              alt="X icon"
+              class="close-btn"
+            />
           </button>
           <h2 class="modal__title">New Post</h2>
           <form class="modal__form" id="card-form" novalidate>
@@ -145,14 +161,14 @@
           type="button"
           class="modal__close-btn modal__close-btn_type_preview"
         >
-          <img src="./images/Modalpreview-close.svg" alt="X icon" />
+          <img
+            src="<%=require('./images/Modalpreview-close.svg')%>"
+            alt="X icon"
+          />
         </button>
         <img src="#" class="modal__image" alt="Modal Image" />
         <p class="modal__caption"></p>
       </div>
     </div>
-
-    <script src="./scripts/validation.js"></script>
-    <script src="./scripts/index.js"></script>
   </body>
 </html>
