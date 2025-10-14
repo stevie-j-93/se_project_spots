@@ -354,14 +354,14 @@ template {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url(35d26b781dc5fda684cc.ttf) format("truetype");
+  src: url(images/Poppins-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  src: url(673ed42382ab264e0bf5.ttf) format("truetype");
+  src: url(images/Poppins-Medium.ttf) format("truetype");
 }
 
 .header {
@@ -578,7 +578,7 @@ template {
 }
 
 .card__delete-btn {
-  background-image: url(d19faa0112f44e2b6e01.svg);
+  background-image: url(images/State=Default.svg);
   width: 32px;
   height: 32px;
   position: absolute;
@@ -593,11 +593,11 @@ template {
 
 .card__delete-btn:hover {
   cursor: pointer;
-  background-image: url(86ae92bd1a937388d496.svg);
+  background-image: url(images/State=Hover.svg);
 }
 
 .card__like-btn {
-  background-image: url(215191cc54f1aa928dad.svg);
+  background-image: url(images/Union.svg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -615,7 +615,7 @@ template {
 }
 
 .card__like-btn_active {
-  background-image: url(0f0dda9918e145f68d20.svg);
+  background-image: url(images/likedActive.svg);
   opacity: 1;
 }
 
