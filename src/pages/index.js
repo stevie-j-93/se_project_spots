@@ -43,7 +43,7 @@ function closeModal(modal) {
 }
 
 const logo = require("../images/Spots.svg");
-const avatar = require("../images/avatar.jpg");
+
 const pencil = require("../images/pencil.svg");
 const pencilMobile = require("../images/Pencil-icon-mobile.svg");
 
@@ -54,9 +54,6 @@ const previewClose = require("../images/Modalpreview-close.svg");
 document.addEventListener("DOMContentLoaded", () => {
   const headerLogo = document.querySelector(".header__logo");
   if (headerLogo) headerLogo.src = logo;
-
-  const profileAvatar = document.querySelector(".profile__avatar");
-  if (profileAvatar) profileAvatar.src = avatar;
 
   const editBtnImg = document.querySelector(".profile__edit-btn img");
   if (editBtnImg) editBtnImg.src = pencil;
@@ -111,9 +108,16 @@ api
       return;
     }
 
-    const allCards = [...apiCards, ...cards];
-    allCards.forEach((item) => {
-      const el = getCardElement(item);
+    apiCards.forEach((item) => {
+      const isLikedByMe = Array.isArray(item.likes)
+        ? item.likes.some((u) => (u?._id || u) === currentUserId)
+        : !!item.isLiked;
+
+      const el = getCardElement({
+        ...item,
+        isLiked: isLikedByMe,
+      });
+
       cardsList.append(el);
     });
   })
@@ -131,37 +135,6 @@ import {
   settings,
   resetValidation,
 } from "../scripts/validation.js";
-
-const cards = [
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-];
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
@@ -240,32 +213,26 @@ function getCardElement(data) {
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
-  const cardId = getCardId(data);
+  const cardId = data._id || data.id || null;
   if (cardId) {
     cardElement.dataset.cardId = cardId;
   } else {
     console.warn("Card has no id from server:", data);
   }
-  if (data.isLiked) {
-    cardLikeBtnEl.classList.add("card__like-btn_active");
-  } else {
-    cardLikeBtnEl.classList.remove("card__like-btn_active");
-  }
+  const initiallyLiked = data.isLiked;
+
+  cardLikeBtnEl.classList.toggle("card__like-btn_active", initiallyLiked);
 
   if (cardId) cardElement.dataset.cardId = cardId;
 
-  // Figure out who owns the card
   const ownerId = typeof data.owner === "string" ? data.owner : data.owner?._id;
 
-  // Hide delete button if this card doesn’t belong to the logged-in user
   if (!currentUserId || !ownerId || ownerId !== currentUserId) {
     cardDeleteBtnEl.style.display = "none";
   } else {
-    // Otherwise, make the delete button open the modal
     cardDeleteBtnEl.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      // Always read from dataset; fallback to data
       const id = cardElement.dataset.cardId || getCardId(data);
       if (!id) {
         console.error("No card id available for deletion:", data);
@@ -274,34 +241,30 @@ function getCardElement(data) {
 
       selectedCard = cardElement;
       selectedCardId = id;
-      // console.log("Open delete modal for:", selectedCardId);
+
       openModal(deleteModal);
     });
   }
 
-  // like button
   cardLikeBtnEl.addEventListener("click", () => {
+    const id = cardElement.dataset.cardId || getCardId(data);
+    if (!id) return console.error("No id for like toggle", data);
+
     const isCurrentlyLiked = cardLikeBtnEl.classList.contains(
       "card__like-btn_active"
     );
+
     api
-      .changeLikeStatus({ id: data._id, isLiked: isCurrentlyLiked })
+      .changeLikeStatus({ id, isLiked: isCurrentlyLiked })
       .then((updatedCard) => {
-        console.log("Like response from server:", updatedCard);
-        cardLikeBtnEl.classList.toggle(
-          "card__like-btn_active",
-          updatedCard.isLiked
-        );
+        const liked = Array.isArray(updatedCard.likes)
+          ? updatedCard.likes.some((u) => (u?._id || u) === currentUserId)
+          : !!updatedCard.isLiked;
+        cardLikeBtnEl.classList.toggle("card__like-btn_active", liked);
       })
       .catch((err) => {
         console.error("Failed to update like status:", err);
       });
-  });
-
-  // delete button
-  cardDeleteBtnEl.addEventListener("click", (e) => {
-    e.stopPropagation();
-    handleDeleteCard(cardElement, data._id);
   });
 
   // preview click
@@ -451,14 +414,6 @@ function handleAddCardSubmit(evt) {
     .finally(() => {
       setButtonText(newPostSaveBtn, false);
     });
-}
-
-function handleAvatarSubmit(evt) {
-  console.log(avatarInput.value);
-  api
-    .editAvatarInfo(avatarInput.value)
-    .then((data) => {})
-    .catch(console.errror);
 }
 
 function handleDeleteSubmit(evt) {
