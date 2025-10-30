@@ -11,11 +11,13 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
     publicPath: "",
+    assetModuleFilename: "images/[name][ext]",
   },
 
   mode: "development",
   devtool: "inline-source-map",
-  stats: "errors-only",
+  stats: { children: true, errorDetails: true },
+
   devServer: {
     static: path.resolve(__dirname, "./dist"),
     compress: true,
@@ -30,7 +32,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: "/node_modules/",
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
@@ -46,7 +48,14 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
+        test: /\.html$/i,
+        loader: "html-loader",
+        options: {
+          sources: true,
+        },
+      },
+      {
+        test: /\.(ico|png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
         type: "asset/resource",
       },
     ],

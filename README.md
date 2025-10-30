@@ -20,7 +20,9 @@ This webpage is deployed to GitHub Pages
 
 ## Video Description
 
-Video: https://drive.google.com/file/d/18HtToVAlGNPth-a8zfs63RhvteByNXkN/view?usp=sharing
+Check out my Project pitch video where i explain how I built Spots app, and what challenges I faced!
+
+Video: https://www.loom.com/share/f1371bb0cb414e8ba9af484a8731faed
 
 **Images**
 ![photo of the HTML on VS code](./images/C44BF3DC-C61D-44ED-86B0-BBBCCFABD80D.jpeg)
